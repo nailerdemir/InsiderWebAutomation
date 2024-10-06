@@ -33,11 +33,6 @@ public class HomePage extends BasePage{
     WebElement careersButton;
 
 
-    public void goToHomePage(String homePageUrl){
-        goToUrl(homePageUrl);
-        wait.until(visibilityOf(navigationBar));
-    }
-
     public void checkHomePage(String homePageTitle){
         soft.assertEquals(getPageTitle(),homePageTitle);
         soft.assertAll();
@@ -61,6 +56,12 @@ public class HomePage extends BasePage{
 
     public void checkCurrentUrl(String url){
         Assert.assertEquals(getCurrentUrl(),url);
+    }
+
+    public void goToCareersPage(){
+        wait.until(visibilityOf(navigationBar));
+        clickNavBarMenus("Company");
+        clickButton("Careers");
     }
 }
 

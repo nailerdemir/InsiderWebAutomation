@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 
 public abstract class BaseTest {
     protected WebDriver driver;
+    String homePageUrl = "https://useinsider.com/";
 
     @BeforeMethod
     public void beforeMethod(){
@@ -16,6 +17,7 @@ public abstract class BaseTest {
             throw new IllegalStateException("Driver boş.");
         }
         driver.manage().window().maximize();
+        driver.get(homePageUrl);
     }
 
     @AfterMethod
