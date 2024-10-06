@@ -11,11 +11,9 @@ public class Listener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         Object testClass = result.getInstance();
+        WebDriver driver = ((BaseTest) testClass).getDriver();
+        ScreenshotHelper.takeScreenShot(driver, result.getName());
 
-        if (testClass instanceof BaseTest) {
-            WebDriver driver = ((BaseTest) testClass).getDriver();
-            ScreenshotHelper.takeScreenShot(driver, result.getName());
-        }
     }
 
     @Override

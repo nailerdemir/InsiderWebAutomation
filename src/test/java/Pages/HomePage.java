@@ -40,6 +40,7 @@ public class HomePage extends BasePage{
     public void goToHomePage(){
         goToUrl(homePageUrl);
         wait.until(visibilityOf(navigationBar));
+        wait.until(elementToBeClickable(cookieAccept_Button)).click();
     }
     public void checkHomePage(String homePageTitle){
         soft.assertEquals(getPageTitle(),homePageTitle);
