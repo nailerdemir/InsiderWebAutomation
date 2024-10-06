@@ -18,6 +18,7 @@ public class CareersTest extends BaseTest{
 
     @Test(description = "Check Careers Page")
     public void checkCareersPage(){
+        homePage.goToHomePage();
         homePage.goToCareersPage();
         careersPage.checkCareerPageBlocks();
     }

@@ -20,6 +20,9 @@ public class HomePage extends BasePage{
         PageFactory.initElements(driver, this);}
 
 
+    @FindBy(id="wt-cli-accept-btn")
+    WebElement cookieAccept_Button;
+
     @FindBy(id="navigation")
     WebElement navigationBar;
 
@@ -29,10 +32,15 @@ public class HomePage extends BasePage{
     @FindBy(css=".dropdown-menu.new-menu-dropdown-layout-6.show")
     WebElement companyMenuDropDownElements;
 
-    //@FindBy(css=".new-menu-dropdown-layout-6-mid-container a:nth-child(2)")
-    WebElement careersButton;
+
+    String homePageUrl="https://useinsider.com/";
 
 
+
+    public void goToHomePage(){
+        goToUrl(homePageUrl);
+        wait.until(visibilityOf(navigationBar));
+    }
     public void checkHomePage(String homePageTitle){
         soft.assertEquals(getPageTitle(),homePageTitle);
         soft.assertAll();
@@ -60,6 +68,7 @@ public class HomePage extends BasePage{
 
     public void goToCareersPage(){
         wait.until(visibilityOf(navigationBar));
+        wait.until(elementToBeClickable(cookieAccept_Button)).click();
         clickNavBarMenus("Company");
         clickButton("Careers");
     }

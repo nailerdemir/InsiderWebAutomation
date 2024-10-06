@@ -10,16 +10,18 @@ public class HomeTest extends BaseTest {
 
     String homePageUrl = "https://useinsider.com/";
     String homePageTitle = "#1 Leader in Individualized, Cross-Channel CX — Insider";
-    String careersPageUrl = "#1 Leader in Individualized, Cross-Channel CX — Insider";
+    String careersPageUrl = "https://useinsider.com/careers/";
 
 
     @BeforeMethod
     public void setup() {
         homePage = new HomePage(driver);
+        homePage.goToHomePage();
     }
 
     @Test(description = "Go to homepage and check blocks")
     public void homePageCheck() {
+        homePage.checkCurrentUrl(homePageUrl);
         homePage.checkHomePage(homePageTitle);
     }
 
@@ -27,6 +29,7 @@ public class HomeTest extends BaseTest {
     public void careerPageCheck(){
         homePage.clickNavBarMenus("Company");
         homePage.clickButton("Careers");
+        homePage.checkCurrentUrl(careersPageUrl);
     }
 }
 
